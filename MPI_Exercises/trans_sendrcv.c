@@ -19,9 +19,11 @@ HISTORY: Written by Tim Mattson, May 1999.
 
 /*******************************************************************
 ** Define macros to compute processor source and destinations
+** NOTE: the macros below are WRONG.  You need to work out
+** the correct macros and then test the program
 *******************************************************************/
-#define TO(ID,   PHASE, NPROC)  ((ID + PHASE        ) % NPROC)
-#define FROM(ID, PHASE, NPROC)  ((ID + NPROC - PHASE) % NPROC)
+#define TO(ID,   PHASE, NPROC)  (NPROC/(ID+1)-PHASE)
+#define FROM(ID, PHASE, NPROC) (NPROC+ID*PHASE)
 
 void trans_sendrcv(double *buff,  double *trans, int Block_order,
                    double *work,  int my_ID, int Num_procs)
