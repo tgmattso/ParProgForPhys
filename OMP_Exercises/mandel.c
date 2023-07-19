@@ -8,7 +8,7 @@
 **  USAGE:   Program runs without input ... just run the executable
 **            
 **  HISTORY: Written:  (Mark Bull, August 2011).
-**           Changed "comples" to "d_comples" to avoid collsion with 
+**           Changed "complex" to "d_complex" to avoid collsion with 
 **           math.h complex type (Tim Mattson, September 2011)
 */
 
@@ -22,27 +22,30 @@
 
 void testpoint(void);
 
-struct d_complex{
-   double r;
-   double i;
-};
+// Mandelbrot set computed through an iterative process 
+//
+//    z_n = z_(n-1) squared plus C 
+//
+// z and C are complex.  Start with z_0 = 0.  The set occupies the 
+// complex plane where each (x,y) point is (Creal,Cimaginary)
 
-struct d_complex c;
+double Creal;
+double Cimag;
+
 int numoutside = 0;
 
 int main(){
    int i, j;
    double area, error, eps  = 1.0e-5;
 
-
 //   Loop over grid of points in the complex plane which contains the Mandelbrot set,
 //   testing each point to see whether it is inside or outside the set.
 
-#pragma omp parallel for private(c,eps)
+#pragma omp parallel for private(Creal,Cimag,eps)
    for (i=0; i<NPOINTS; i++) {
      for (j=0; j<NPOINTS; j++) {
-       c.r = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
-       c.i = 1.125*(double)(j)/(double)(NPOINTS)+eps;
+       Creal = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
+       Cimag = 1.125*(double)(j)/(double)(NPOINTS)+eps;
        testpoint();
      }
    }
@@ -62,20 +65,20 @@ void testpoint(void){
 // Does the iteration z=z*z+c, until |z| > 2 when point is known to be outside set
 // If loop count reaches MAXITER, point is considered to be inside the set
 
-       struct d_complex z;
+       double zr, zi; 
        int iter;
        double temp;
 
-       z=c;
+       zr = Creal;     
+       zi = Cimag;
        for (iter=0; iter<MAXITER; iter++){
-         temp = (z.r*z.r)-(z.i*z.i)+c.r;
-         z.i = z.r*z.i*2+c.i;
-         z.r = temp;
-         if ((z.r*z.r+z.i*z.i)>4.0) {
+         temp = (zr*zr)-(zi*zi)+Creal;
+         zi = zr*zi*2+Cimag;
+         zr = temp;
+         if ((zr*zr+zi*zi)>4.0) {
            numoutside++;
            break;
          }
        }
-
 }
 
