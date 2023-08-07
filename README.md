@@ -1,6 +1,6 @@
 # Parallel Programming Intro for Physics People
 
-I am, unfortunately, not a professional physicist.  I am a computational scientist or even (I hate to admit) a computer scientist.
+I am, unfortunately, not a professional physicist.  I am a computational scientist or even, I hate to admit, a computer scientist.
 
 But my passion is physics.   My degrees say chemistry but if you look at what I actually did in Graduate School, it was physics.   So while I am not a physicist, I am a member of a community I'll call "Physics People".   Physics defines the lens through which we view the world.   It clouds how we think about science and gives us a unique perspective on computing.
 
