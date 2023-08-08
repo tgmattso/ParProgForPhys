@@ -6,6 +6,6 @@ But my passion is physics.   My degrees say chemistry but if you look at what I 
 
 In this repository, you'll find materials to support a course on parallel computing specifically tuned to the needs of physics people.  It emphasizes OpenMP since that's the best place to start when learning parallel computing.  Over time, however, it will grow to include MPI, SYCL, PyOMP, Modin and other approach to parallel computing that physics people use.
 
-this content is under a creative commons license.  You can do whatever you want with it, but please cite me (Tim Mattson).
+This content is under a creative commons license.  You can do whatever you want with it, but please cite me (Tim Mattson).
 
 
