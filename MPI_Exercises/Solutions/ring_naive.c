@@ -22,7 +22,7 @@ HISTORY: Written By Tim Mattson, 4/99
 *******************************************************************/
 #include "ring.h"
 
-ring_naive(
+void ring_naive(
            double *x,        /* message to shift around the ring */
            double *incoming, /* buffer to hold incoming message  */
            int buff_count,   /* size of message                  */

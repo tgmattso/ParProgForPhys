@@ -17,6 +17,7 @@ Arguments: timings     - input double array of times.
 #define BYTE_TO_MBYTE 1.0e-6 /* bytes to mbytes conversion */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 /***************************************************************

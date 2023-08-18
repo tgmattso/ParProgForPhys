@@ -11,7 +11,7 @@ HISTORY: Written By Tim Mattson, 4/99
 *******************************************************************/
 #include "ring.h"
 
-ring_persistent(
+void ring_persistent(
            double *x,        /* message to shift around the ring */
            double *incoming, /* buffer to hold incoming message  */
            int buff_count,   /* size of message                  */
