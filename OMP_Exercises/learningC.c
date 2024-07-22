@@ -11,8 +11,7 @@
 //
 // To build this program, you submit it to a compiler  such as 
 // icc, cc, or gcc: 
-//
-//        gcc LearningC.c
+//                    gcc learningC.c
 //
 // The compiler by default generates an executable in a file 
 // called a.out. You run the program by issuing the name of 
@@ -156,10 +155,10 @@ printf("\n");
 // C lets us use conditional logic.  Consider the following
 
 if(whole == WholeValue)            // logical equivalence is two = signs
-{                                  // other common logical operators include
+{                                                  // other common logical operators include
    printf(" whole = %d \n",whole); // less than (<), greater than (>) and  
-}                                  // less that or equal to (<=) and of course
-                                   // greater than or equal to (>=)
+}                                                   // less that or equal to (<=) and of course
+                                                    // greater than or equal to (>=)
 
 // For a single statement inside the if statement, all those 
 // brackets are a bit cumbersome.  In C, a single line is 
@@ -266,7 +265,7 @@ int pointFunc(float *val)  // I pass in the address of val
                        // memory at that address will be visible 
                        // outside the function.
 
-// Now lets just quickly show you how dynamic memory works.
+// Now let's just quickly show you how dynamic memory works.
 // First create a pointer to memory that you will treat as
 // a bunch of integers
 
