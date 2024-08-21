@@ -204,27 +204,6 @@ void solve(const int n, const double alpha, const double dx, const double dt, co
   const double r2 = 1.0 - 4.0*r;
 
   // Loop over the nxn grid
-#ifdef ALT
-  for (int i = 1; i < n-1; ++i) {
-    for (int j = 1; j < n-1; ++j) {
-
-      // Update the 5-point stencil, using boundary conditions on the edges of the domain.
-      // Boundaries are zero because the MMS solution is zero there.
-      u_tmp[i+j*n] =  r2 * u[i+j*n] +
-      r * (u[i+1+j*n] ) +
-      r * (u[i-1+j*n] ) +
-      r * (u[i+(j+1)*n] ) +
-      r * (u[i+(j-1)*n] );
-    }
-  }
-//  for(int i=0; i<n; ++i){
-//     u_tmp[i]=0.0;
-//     u_tmp[i+n*(n-1)]=0.0;
-//     u_tmp[n+i*n ]=0.0;
-//     u_tmp[i*n ]=0.0;
-//  }
-
-#else
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
 
@@ -237,7 +216,6 @@ void solve(const int n, const double alpha, const double dx, const double dt, co
       r * ((j > 0)   ? u[i+(j-1)*n] : 0.0);
     }
   }
-#endif
 }
 
 
