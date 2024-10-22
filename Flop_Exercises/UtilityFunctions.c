@@ -14,42 +14,11 @@ History:
 #include <stdlib.h>
 #include "UtilityFunctions.h"
 
-#define N 100000  //length of sequence of numbers to work with  
-
-//============================================================================
-
-// sum the sequence, x, of length Nlen using the Kahan algorithm
-float KahanSum(int Nlen, float *x)
-{
-   float ksum, correction, xcorrected, tmpSum;
-
-   if(Nlen < 1) return -1;  // need at least two values to sum
-
-   correction = 0.0f;
-   ksum = 0.0f;
-   for (int i = 0; i<Nlen;i++){
-      xcorrected = x[i] - correction; 
-      tmpSum =  ksum + xcorrected;
-      correction = (tmpSum - ksum) - xcorrected;
-      ksum = tmpSum;
-   }
-   return ksum;
-}
-
-// Compare pair of floats passed to comparator
-// This is used in qsort so I can sort the array before summing.
-int comp(const void *p, const void *q) 
-{
-    float l = *(const float *)p;
-    float r = *(const float *)q;
-    return l - r;
-}
-
 //================================================================
 //  Function to fill a sequence of N values greater than zero and
 //  produce a high quality estimate of the sum of those values
 //================================================================
-void FillSequence(float *seq, float *True_sum)
+void FillSequence(int N, float *seq, float *True_sum)
 {
    float shift_up   = 100.0f;
    float shift_down =   0.0000000001f;

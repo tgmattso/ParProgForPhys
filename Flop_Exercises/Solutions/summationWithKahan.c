@@ -20,14 +20,14 @@ History:
 #include <stdlib.h>
 #include "UtilityFunctions.h"
 
-#define N 100000  //length of sequence of numbers to work with  
+const int N=100000;  //length of sequence of numbers to work with  
 
 //============================================================================
 // we use the following function from UtilityFunctions.c
 //
-// void FillSequence(float*, float*);    // fill sequence (>0), return "true" sum
-// float KahanSum(int, float*);          // Kahan Sum of a sequence
-// int comp(const void *, const void *); // comparator func for qsort
+// void FillSequence(int, float*, float*); // fill sequence (>0), return "true" sum
+// float KahanSum(int, float*);            // Kahan Sum of a sequence
+// int comp(const void *, const void *);   // comparator func for qsort
 //
 //============================================================================
 
@@ -36,8 +36,7 @@ int main ()
    float seq[N];       //Sequence to sum, statically defined to keep the code simple
    float True_sum;  //The best estimate of the actual sum
 
-   FillSequence(seq, &True_sum); // populate seq with random values > 0
-
+   FillSequence(N, seq, &True_sum); // populate seq with random values > 0
 
    // basic, naive sum
    float sum_val =0.0f;

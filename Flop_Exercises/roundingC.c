@@ -49,8 +49,9 @@ int main()
    for(int i = 0; i<Count;i++){
      sum += dt;
    }
+   printf(" sums should be 100\n");
    printf(" round towardZero sum = %f or %f\n",sum,dt*Count);
-   printf(" %g \n",1.0+eps);
+   printf("1.0 + eps =  %g \n",1.0+eps);
   
 
    fesetround(FE_DOWNWARD);
@@ -58,21 +59,21 @@ int main()
      sum += dt;
    }
    printf(" round downward sum = %f or %f\n",sum,dt*Count);
-   printf(" %g \n",1.0+eps);
+   printf("1.0 + eps =  %g \n",1.0+eps);
 
    fesetround(FE_UPWARD);
    for(int i = 0,sum=0.0f; i<Count;i++){
      sum += dt;
    }
    printf(" round upward sum = %f or %f\n",sum,dt*Count);
-   printf(" %g \n",1.0+eps);
+   printf("1.0 + eps =  %g \n",1.0+eps);
 
    fesetround(FE_TONEAREST);
    for(int i = 0,sum=0.0f; i<Count;i++){
      sum += dt;
    }
    printf(" round to nearest sum = %f or %f\n",sum,dt*Count);
-   printf(" %g \n",1.0+eps);
+   printf("1.0 + eps =  %g \n",1.0+eps);
 
    // Return to orignial rounding mode.  
    fesetround(origRound);

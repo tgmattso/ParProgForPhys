@@ -1,7 +1,7 @@
 /*
 
 NAME:   
-   summation
+   summation (the C++ version)
 
 Purpose: 
    Create an array of numbers and explore floating point 
@@ -12,14 +12,17 @@ Usage:
    UtilityFunctions.c.   For reasons of pedagogy, do not look
    at the functions in UtilityFunctions.c. Treat it as a block box.
 
-        gcc summation.c UtilityFunctions.c
+        g++ summation.cc UtilityFunctions.c
 
 History: 
    Written by Tim Mattson, 9/2023.
 
 */
 #include <stdio.h>
-#include <stdlib.h>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <numeric>
 #include "UtilityFunctions.h"  // where FillSequence comes from
 
 #define N 100000  //length of sequence of numbers to work with  
@@ -28,15 +31,14 @@ History:
 
 int main ()
 {
-   float seq[N];    //Sequence to sum, statically defined to keep the code simple
-   float True_sum;  //The best estimate of the actual sum
+   std::vector<float> seq(N); //Sequence to sum 
+   float True_sum;            //An estimate of the actual sum
    float sum = 0.0f;
 
-   FillSequence(N, seq, &True_sum); // populate seq with N random values > 0
+   FillSequence(N, seq.data(), &True_sum); // populate seq with N random values > 0
 
-   #pragma omp parallel for reduction(+:sum)
-   for(int i=0; i<N; i++)sum += seq[i];
+// Add code here to sum the elements of the array of length N, seq
 
-   printf(" Sum = %f, Estimated sum = %f\n",sum,True_sum);
+   printf(" Sum = %f, Estimated sum = %f\n",sum, True_sum);
 
 }
