@@ -8,6 +8,8 @@ In this repository, you'll find materials to support courses on parallel computi
 
 For the parallel programming courses, always start with the file *OpenMP_CPU.pdf*.  This segment of the course introduces key concepts in parallel programming through a series of exercises in parallel programming on a CPU. After that CPU focussed introduction to parallel computing, the sequnce splits.  If there is little time, there is a lecture in the file *Other_par_prog_envs.pdf* that summarizes programming for GPUs and clusters.  If time is not an issue, there are hands-on courses for cluster computing (*MPI_intro_hands_on.pdf*) and GPU computing (*OpenMP_GPU.pdf*).  
 
+I also include in this repository my materials for an hands-on course on floating point arithmetic.
+
 This content is under a creative commons license.  You can do whatever you want with it, but please cite me (Tim Mattson).
 
 
