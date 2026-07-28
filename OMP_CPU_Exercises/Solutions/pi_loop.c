@@ -44,6 +44,7 @@ int main ()
 	  start_time = omp_get_wtime();
 #pragma omp parallel  
 {
+	double x;
 #pragma omp single
 	  printf(" num_threads = %d",omp_get_num_threads());
 
