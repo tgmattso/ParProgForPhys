@@ -1,7 +1,7 @@
 # for g++ compiler on Apple OS-X
 # copy to make.def
 #CC          = g++
-CC          = mpicc -cc=gcc-13 
+CC          = mpicc -cc=gcc-15 
 CLINKER     = $(CC)
 OPTFLAGS    = -fopenmp -DAPPLE -O3
 LIBS        = -lm

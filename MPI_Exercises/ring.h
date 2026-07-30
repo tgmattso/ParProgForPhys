@@ -23,3 +23,11 @@ HISTORY: Written by Tim Mattson, April 1999
 #define TOL   0.001       /*  Tolerance used in floating point compares */
 #define MB_CONV  1.0e-6   /*  conversion factor ... bytes to Megabytes */
 
+// the following are function prototypes for the various ring methods
+void ring_naive(
+           double*,    /* message to shift around the ring */
+           double*,    /* buffer to hold incoming message  */
+           int,        /* size of message                  */
+           int,        /* total number of nodes            */
+           int,        /* numb of times to shift messege   */
+           int);       /* node id number                   */
