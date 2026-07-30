@@ -6,6 +6,6 @@ Starting with serial code, the tutorial takes you thorugh parallellising, explor
 
 * `vadd` – A simple vector addition program, often considered the "hello world" of GPU programming.
 * `pi` – A numerical integration program that calculates and approximate value of π.
-* `jac_solv` – A Jacobi solver.
-* `heat` - An explicit finite difference 5-point stencil code.
+* `jac_solv` – A Jacobi solver; a relaxation method for solving a system of linear equations.
+* `heat` - An explicit finite difference 5-point stencil solver for the heat diffusion equation.
 
