@@ -45,11 +45,7 @@ HISTORY: Written by Tim Mattson, April 1999.
 
 #include "mpi.h" 
 #include <stdio.h>
-#ifdef APPLE
 #include <stdlib.h>
-#else
-#include <malloc.h>
-#endif
 #include "trans_utility.h"
 
 #define TOL        0.0001

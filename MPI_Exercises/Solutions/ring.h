@@ -8,11 +8,7 @@ HISTORY: Written by Tim Mattson, April 1999
 *******************************************************************/
 
 #include "mpi.h"
-#ifdef APPLE
 #include <stdlib.h>
-#else
-#include <malloc.h>
-#endif
 #include <stdio.h>
 
 #define IS_ODD(x)  ((x)%2)           /* test for an odd int */

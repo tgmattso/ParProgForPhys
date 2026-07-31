@@ -18,8 +18,7 @@ ARGUMENTS: iterations  - input long, number of iterations for average.
 #include <math.h>
 #include "mpi.h"
 
-double wt_overhead(iterations)
-long   iterations;    /* Number of iterations for computing average*/
+double wt_overhead(long iterations) /* Num of iterations for computing ave*/
 {
    double ave_time;   /* average time */
    double std_dev;    /* standard deviation */

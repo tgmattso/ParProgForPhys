@@ -3,7 +3,7 @@
 
 NAME:    ring_persistent
 
-PURPOSE: This function uses teh persistent communication request
+PURPOSE: This function uses the persistent communication request
          mechanism to implement the ring communication in MPI.
 
 HISTORY: Written By Tim Mattson, 4/99
@@ -48,6 +48,8 @@ void ring_persistent(
           test_clear(x, incoming, buff_count, i, my_ID);
 #endif
    }
+   MPI_Request_free(&snd_req);
+   MPI_Request_free(&rcv_req);
 
 }
 

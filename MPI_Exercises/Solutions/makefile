@@ -1,8 +1,17 @@
 # 
+# Makefile for MPI solutions programs. Modify the ../make.def
+# file to match your local system.
+#
+# Targets:
+#    make          build the full set of executables
+#    make clean    remove object files and executables
+#    make test     build all programs and run default cases
+#
 
 include ../make.def
 
-EXES= pi_bsp$(EXE) hello_mpi$(EXE) ring$(EXE) trans$(EXE) ping$(EXE)
+EXES= pi_bsp$(EXE) hello_mpi$(EXE) ring$(EXE) trans$(EXE) \
+      pingBench$(EXE) ping_pong$(EXE)
 
 RINGOBJS = ring.$(OBJ) ring_naive.$(OBJ) ring_split.$(OBJ) \
            ring_sndrcv.$(OBJ) ring_persistent.$(OBJ)
@@ -10,7 +19,7 @@ RINGOBJS = ring.$(OBJ) ring_naive.$(OBJ) ring_split.$(OBJ) \
 TRANSOBJS = trans_isnd_ircv.$(OBJ)  trans_sendrcv.$(OBJ)  \
             trans_snd_rcv.$(OBJ) trans_utility.$(OBJ)  transpose.$(OBJ)
 
-PINGOBJS  = ping_pong.$(OBJ) random.$(OBJ) time_stats.$(OBJ) wt_overhead.$(OBJ)
+PINGOBJS  = pingBench.$(OBJ) random.$(OBJ) time_stats.$(OBJ) wt_overhead.$(OBJ)
 
 all: $(EXES)
 
@@ -26,15 +35,19 @@ ring$(EXE): $(RINGOBJS)
 trans$(EXE): $(TRANSOBJS) trans_utility.h
 	$(CLINKER) $(OPTFLAGS) -o trans $(TRANSOBJS) $(LIBS)
 
-ping$(EXE): $(PINGOBJS) trans_utility.h
+pingBench$(EXE): $(PINGOBJS) trans_utility.h
 	$(CLINKER) $(OPTFLAGS) -o ping $(PINGOBJS) $(LIBS)
+
+ping_pong$(EXE): ping_pong.$(OBJ)
+	$(CLINKER) $(OPTFLAGS) -o ping_pong ping_pong.$(OBJ) $(LIBS)
 
 test: $(EXES)
 	mpiexec -n 4 $(PRE)pi_bsp; \
         mpiexec -n 4 $(PRE)hello_mpi;  \
         mpiexec -n 4 $(PRE)ring;  \
         mpiexec -n 4 $(PRE)trans;  \
-        mpiexec -n 2 $(PRE)ping
+        mpiexec -n 2 $(PRE)ping_pong   \
+        mpiexec -n 2 $(PRE)pingBench
 
 clean:
 	$(RM) -f $(EXES) *.$(OBJ)

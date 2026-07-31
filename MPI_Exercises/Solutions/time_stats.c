@@ -23,24 +23,25 @@ Arguments: timings     - input double array of times.
 /***************************************************************
 ** my_compare: Compare two real numbers.
 ****************************************************************/
-static int my_compare(a1,a2) 
-double *a1;
-double *a2;                  /* Return an integer as folows:  */
-{                          
-   if ( *a1 > *a2 )          /*   1 if a1 > a2                */
-         return 1; 
-   if ( *a1 < *a2 )          /*  -1 if a1 < a2                */
-         return -1;
-   return 0;                 /*   0 if a1 = a2                */
+int my_compare(const void *a, const void *b) {
+    return (*(double *)a - *(double *)b);
 }
+//static int my_compare(void *a1,void *a2) 
+/* Return an integer as folows:  */
+//{                          
+//   if ( *a1 > *a2 )          /*   1 if a1 > a2                */
+//         return 1; 
+//   if ( *a1 < *a2 )          /*  -1 if a1 < a2                */
+//         return -1;
+//   return 0;                 /*   0 if a1 = a2                */
+//}
 
 /***************************************************************
 ** time_stats: Write timeing statistics to standard out.
 ****************************************************************/
-void time_stats(timings, iterations, size_bytes)
-int iterations;         /* Number of iterations to time */
-double *timings;        /* array of times for each iteration */
-int size_bytes;         /* size of message in bytes */
+void time_stats(double *timings,  /* array of times for each iteration */
+                int iterations,   /* Number of iterations to time */
+                int size_bytes)   /* size of message in bytes */
 {
    int    min_ind;            /* index to minimum time */
    int    max_ind;            /* index to maximum time */
