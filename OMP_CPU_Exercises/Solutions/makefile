@@ -9,7 +9,7 @@ EXES=hello_par$(EXE) pi_spmd_simple$(EXE) pi_spmd_final$(EXE) \
      pi_loop$(EXE) mandel_par$(EXE) pi_task$(EXE)  \
      mm_testbed$(EXE) jac_solv_parfor jac_solv_par_for$(EXE) \
      racey_tasks$(EXE) jac_solv_simd$(EXE) hist_par$(EXE)\
-     linked_notasks$(EXE) linked_tasks$(EXE)
+     linked_notasks$(EXE) linked_tasks$(EXE) trans_par$(EXE)
 
 #  pi_vec$(EXE) excluded since it only works on x86 processors
 
@@ -71,6 +71,10 @@ linked_notasks$(EXE): linked_notasks.$(OBJ)
 linked_tasks$(EXE): linked_tasks.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o linked_tasks$(EXE) linked_tasks.$(OBJ) $(LIBS)
 
+trans_par$(EXE): trans_par.$(OBJ) 
+	$(CLINKER) $(OPTFLAGS) -o trans_par$(EXE) trans_par.$(OBJ) $(LIBS)
+
+
 test: $(EXES)
 	$(PRE)hello_par$(EXE) 
 	$(PRE)pi_spmd_simple$(EXE) 
@@ -86,6 +90,7 @@ test: $(EXES)
 	$(PRE)hist_par$(EXE)  
 	$(PRE)linked_notasks$(EXE) 
 	$(PRE)linked_tasks$(EXE) 
+	$(PRE)trans_par$(EXE) 
 
 # $(PRE)pi_vec$(EXE) excluded since its only for x86 
 clean:
